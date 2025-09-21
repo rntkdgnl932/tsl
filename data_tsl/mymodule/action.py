@@ -28,10 +28,9 @@ def menu_open(cla):
 
         while is_action is False:
             is_action_count += 1
-            if is_action_count > 3:
+            if is_action_count > 5:
                 is_action = True
 
-            is_confirm = False
 
 
             full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\character_select.PNG"
@@ -40,18 +39,13 @@ def menu_open(cla):
             imgs_ = imgs_set_(740, 30, 1010, 1040, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("character_select", imgs_)
-                is_confirm = True
-                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_action = True
             else:
                 result_out = out_check(cla)
                 if result_out == True:
                     click_pos_2(975, 55, cla)
                 else:
                     clean_screen_start(cla)
-            if is_confirm == True:
-                QTest.qWait(1000)
-            else:
-                is_action = True
             QTest.qWait(100)
 
     except Exception as e:
@@ -81,7 +75,7 @@ def confirm_all(cla):
                 full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all\\" + str(kind_confirm_list[i])
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 30, 960, 1040, cla, img, 0.85)
+                imgs_ = imgs_set_(0, 30, 1010, 990, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("confirm_1", imgs_)
                     is_confirm = True

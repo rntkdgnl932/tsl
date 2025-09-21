@@ -94,9 +94,9 @@ def quest_open(cla, data):
                 click_pos_2(x_reg, 95, cla)
                 QTest.qWait(500)
 
-                if data == "메인":
+                if str(quest_kind[1]) == "메인":
                     click_pos_2(55, 140, cla)
-                elif data == "서브":
+                elif str(quest_kind[1]) == "서브":
                     click_pos_2(55, 170, cla)
                 QTest.qWait(500)
 
@@ -125,19 +125,12 @@ def quest_open(cla, data):
                     time.sleep(1)
 
 
-                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\soolock_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(860, 960, 1010, 1040, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("soolock_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(1)
+
 
                 full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\82_move_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(860, 960, 1010, 1040, cla, img, 0.8)
+                imgs_ = imgs_set_(760, 960, 1010, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("82_move_btn", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -145,49 +138,59 @@ def quest_open(cla, data):
                     confirm_all(cla)
                     is_ing = False
                 else:
-                    for_1y = 0
-                    for_2y = 0
-                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\soolock_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_for = imgs_set_for(240, 120, 330, 1040, cla, img, 0.8)
-                    if imgs_for is not None and imgs_for != False:
-                        if len(imgs_for) > 0:
-                            for_1x = imgs_for[len(imgs_for) - 1][0]
-                            for_1y = imgs_for[len(imgs_for) - 1][1]
+                    imgs_ = imgs_set_(860, 960, 1010, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("soolock_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(1)
 
-                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_for = imgs_set_for(240, 120, 330, 1040, cla, img, 0.8)
-                    if imgs_for is not None and imgs_for != False:
-                        if len(imgs_for) > 0:
-                            for_2x = imgs_for[len(imgs_for) - 1][0]
-                            for_2y = imgs_for[len(imgs_for) - 1][1]
-
-                    if for_1y > for_2y:
-                        for_x = for_1x
-                        for_y = for_1y
                     else:
-                        for_x = for_2x
-                        for_y = for_2y
+                        for_1y = 0
+                        for_2y = 0
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_for = imgs_set_for(240, 120, 330, 1040, cla, img, 0.8)
+                        if imgs_for is not None and imgs_for != False:
+                            if len(imgs_for) > 0:
+                                for_1x = imgs_for[len(imgs_for) - 1][0]
+                                for_1y = imgs_for[len(imgs_for) - 1][1]
 
-                    if for_y > 900:
-                        drag_pos(220, 990, 220, 965, cla)
-                        QTest.qWait(2000)
-                        for i in range(10):
-                            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(240, 120, 330, 1040, cla, img, 0.75)
-                            if imgs_ is not None and imgs_ != False:
-                                break
-                            else:
-                                drag_pos(220, 965, 220, 990, cla)
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_for = imgs_set_for(240, 120, 330, 1040, cla, img, 0.8)
+                        if imgs_for is not None and imgs_for != False:
+                            if len(imgs_for) > 0:
+                                for_2x = imgs_for[len(imgs_for) - 1][0]
+                                for_2y = imgs_for[len(imgs_for) - 1][1]
+
+                        if for_1y > for_2y:
+                            for_x = for_1x
+                            for_y = for_1y
+                        else:
+                            for_x = for_2x
+                            for_y = for_2y
+
+                        if for_y > 900:
+                            drag_pos(220, 990, 220, 965, cla)
                             QTest.qWait(2000)
+                            for i in range(10):
+                                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(240, 120, 330, 1040, cla, img, 0.75)
+                                if imgs_ is not None and imgs_ != False:
+                                    break
+                                else:
+                                    drag_pos(220, 965, 220, 990, cla)
+                                QTest.qWait(2000)
 
-                    else:
-                        click_pos_reg(for_x, for_y + 45, cla)
+                        else:
+                            click_pos_reg(for_x, for_y + 45, cla)
 
 
 
@@ -203,7 +206,7 @@ def quest_open(cla, data):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(750, 30, 1010, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("quest", imgs_)
+                    print("menu quest", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
 
                     is_not = False
