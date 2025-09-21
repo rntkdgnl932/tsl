@@ -18,7 +18,7 @@ from clean_screen import all_skip, skip_check, skip_start, clean_screen_start
 from check import out_check
 from function_game import click_pos_2, click_pos_reg, imgs_set_, imgs_set_for, drag_pos
 
-
+kind_point_ready = "c:\\my_games\\tsl\\data_tsl\\imgs\\point\\"
 
 
 #################
@@ -100,6 +100,21 @@ def quest_open(cla, data):
                     click_pos_2(55, 170, cla)
                 QTest.qWait(500)
 
+
+                point_ready = kind_point_ready + "collection\\item\\"
+                point_ = os.listdir(point_ready)
+                for p in range(len(point_)):
+                    full_path = str(point_ready) + point_[p]
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 120, 320, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("quest : collection item point!!!!!", point_[p], imgs_)
+                        click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+                        QTest.qWait(500)
+                        break
+
+
                 full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\bosang_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -157,7 +172,7 @@ def quest_open(cla, data):
                         for_x = for_2x
                         for_y = for_2y
 
-                    if for_y > 970:
+                    if for_y > 900:
                         drag_pos(220, 990, 220, 965, cla)
                         QTest.qWait(2000)
                         for i in range(10):
