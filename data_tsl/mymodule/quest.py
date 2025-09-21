@@ -15,7 +15,7 @@ import pyautogui
 import random
 
 from clean_screen import all_skip, skip_check, skip_start, clean_screen_start
-from check import out_check
+from check import out_check, confirm_check
 from function_game import click_pos_2, click_pos_reg, imgs_set_, imgs_set_for, drag_pos
 
 kind_point_ready = "c:\\my_games\\tsl\\data_tsl\\imgs\\point\\"
@@ -83,7 +83,19 @@ def quest_start(cla, data):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     if is_82 == True:
                         QTest.qWait(500)
-                        confirm_all(cla)
+                        result_c_check = confirm_check(cla)
+                        if result_c_check == False:
+                            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\quest_check\\quest_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(940, 850, 1010, 920, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("quest_btn", imgs_)
+                            else:
+                                quest_open(cla, data)
+                        else:
+
+                            confirm_all(cla)
                     else:
                         quest_open(cla, data)
         else:

@@ -59,6 +59,42 @@ def out_check(cla):
 
 
 
+def confirm_check(cla):
+    kind_confirm = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all"
+    kind_confirm_list = os.listdir(kind_confirm)
+
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg
+
+    try:
+        print("confirm_all")
+
+
+        is_confirm = False
+
+        for i in range(len(kind_confirm_list)):
+
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all\\" + str(kind_confirm_list[i])
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 1010, 990, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("confirm_1", str(kind_confirm_list[i]), imgs_)
+                is_confirm = True
+                break
+            else:
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all\\" + str(kind_confirm_list[i])
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 30, 650, 1040, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("confirm_1", str(kind_confirm_list[i]), imgs_)
+                    is_confirm = True
+                    break
+        return is_confirm
+    except Exception as e:
+        print(e)
 
 
 def loading_check(cla):
