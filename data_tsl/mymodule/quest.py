@@ -106,6 +106,8 @@ def quest_start(cla, data):
 
 def quest_open(cla, data):
 
+    from schedule import myQuest_play_add
+    from function_game import imgs_set_reg
     quest_kind = data.split("_")
     # quest_kind[1] "메인","서브"
     # quest_kind[2] "1", "2", "3"
@@ -229,7 +231,21 @@ def quest_open(cla, data):
                                 QTest.qWait(2000)
 
                         else:
+
+
                             click_pos_reg(for_x, for_y + 45, cla)
+
+                            if str(quest_kind[1]) == "서브":
+                                QTest.qWait(500)
+                                print("for_x, for_y", for_x, for_y)
+                                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\sub_complete.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_reg(for_x - 25, for_y, for_x + 25, for_y + 140, cla, img, 0.75)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("sub_complete", imgs_)
+                                    myQuest_play_add(cla, data)
+                                    is_ing = False
 
 
 
