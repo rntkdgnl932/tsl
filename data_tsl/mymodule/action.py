@@ -77,9 +77,18 @@ def confirm_all(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(0, 30, 1010, 990, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
-                    print("confirm_1", imgs_)
+                    print("confirm_1", str(kind_confirm_list[i]), imgs_)
                     is_confirm = True
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all\\" + str(kind_confirm_list[i])
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 650, 1040, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("confirm_1", str(kind_confirm_list[i]), imgs_)
+                        is_confirm = True
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
             if is_confirm == True:
                 is_confirm = False
