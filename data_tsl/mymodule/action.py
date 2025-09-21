@@ -8,7 +8,7 @@ from check import out_check
 import numpy as np
 import cv2
 from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, change_number
-from clean_screen import clean_screen_start
+from clean_screen import clean_screen_start, close_check
 from check import juljun_check, attack_check
 
 
@@ -39,7 +39,10 @@ def menu_open(cla):
             imgs_ = imgs_set_(740, 30, 1010, 1040, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("character_select", imgs_)
-                is_action = True
+
+                result_close = close_check(cla)
+                if result_close == False:
+                    is_action = True
             else:
                 result_out = out_check(cla)
                 if result_out == True:

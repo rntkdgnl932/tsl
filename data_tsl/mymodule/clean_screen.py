@@ -104,6 +104,7 @@ def close_click(cla):
                     print("close_list", kind_close_list[i], imgs_)
                     is_close = True
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                    QTest.qWait(500)
 
             if is_close == True:
                 is_action_count = 0
