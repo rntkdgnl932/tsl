@@ -57,8 +57,35 @@ def quest_start(cla, data):
                     print("q_clear", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                 else:
+                    quest_kind = data.split("_")
+                    # quest_kind[1] "메인","서브"
+                    # quest_kind[2] "1", "2", "3"
 
-                    quest_open(cla, data)
+                    is_82 = False
+
+                    if str(quest_kind[1]) == "메인":
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\82_btn_main.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(935, 80, 980, 130, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("82_btn_main", imgs_)
+                            is_82 = True
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    elif str(quest_kind[1]) == "서브":
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\82_btn_sub.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(935, 130, 980, 220, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("82_btn_sub", imgs_)
+                            is_82 = True
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                    if is_82 == True:
+                        QTest.qWait(500)
+                        confirm_all(cla)
+                    else:
+                        quest_open(cla, data)
         else:
             quest_open(cla, data)
     except Exception as e:
