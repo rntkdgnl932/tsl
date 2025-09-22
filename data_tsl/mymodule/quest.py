@@ -26,6 +26,7 @@ kind_point_ready = "c:\\my_games\\tsl\\data_tsl\\imgs\\point\\"
 ####################
 def quest_start(cla, data):
 
+    from potion import potion_check
 
     try:
         print("quest_start", data)
@@ -35,7 +36,10 @@ def quest_start(cla, data):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(500, 600, 620, 680, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("quest_btn", imgs_)
+            print("jangchak_btn", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+
+        potion_check(cla)
 
         all_skip(cla)
 

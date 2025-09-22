@@ -19,12 +19,14 @@ def potion_check(cla):
     try:
         print("potion_check")
 
-        is_potion = False
+        is_potion = True
 
         result_juljun = juljun_check(cla)
         if result_juljun == True:
             # result = text_check_get_num(443, 1002, 451, 1018, cla)
             # print("result", result)
+
+            is_potion = False
 
             for n in range(len(kind_num)):
                 full_path = str(kind_num_ready) + str(kind_num[n])
@@ -42,6 +44,8 @@ def potion_check(cla):
             if result_out == True:
                 # result = text_check_get_num(363, 1010, 373, 1023, cla)
                 # print("result", result)
+
+                is_potion = False
 
                 for n in range(len(kind_num)):
                     full_path = str(kind_num_ready) + str(kind_num[n])
