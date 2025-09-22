@@ -243,32 +243,43 @@ def go_maul(cla):
             if is_count > 7:
                 is_ = True
 
-            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_1.PNG"
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\jadong\\like_spot_btn.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 195, 50, 250, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
-                print("go_maul jabhwa_btn_1", imgs_)
                 is_ = True
+                go_maul_in(cla)
             else:
-                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_2.PNG"
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("go_maul jabhwa_btn_2", imgs_)
-                    is_ = True
+                    print("go_maul jabhwa_btn_1", imgs_)
+                    click_pos_2(130, 180, cla)
+                    QTest.qWait(1000)
+
                 else:
-                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\maul_teleport.PNG"
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(565, 975, 625, 1040, cla, img, 0.8)
+                    imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        print("maul_teleport", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        QTest.qWait(3000)
+                        print("go_maul jabhwa_btn_2", imgs_)
+                        click_pos_2(130, 180, cla)
+                        QTest.qWait(1000)
                     else:
-                        clean_screen_start(cla)
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\maul_teleport.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(565, 975, 625, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("maul_teleport", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            QTest.qWait(3000)
+                        else:
+                            clean_screen_start(cla)
 
             QTest.qWait(1000)
 
@@ -277,6 +288,110 @@ def go_maul(cla):
     except Exception as e:
         print(e)
 
+
+def go_maul_in(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_
+    from check import confirm_check
+
+    try:
+        print("go_maul_in")
+
+        is_ = False
+        is_count = 0
+        while is_ is False:
+            is_count += 1
+            if is_count > 7:
+                is_ = True
+
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("go_maul jabhwa_btn_1", imgs_)
+                is_ = True
+
+            else:
+
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("go_maul jabhwa_btn_2", imgs_)
+                    is_ = True
+                else:
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\jadong\\like_spot_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 195, 50, 250, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("like_spot_btn", imgs_)
+
+                        result_confirm = confirm_check(cla)
+                        if result_confirm == True:
+                            confirm_all(cla)
+                        else:
+                            is_clicked = False
+                            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\2_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(880, 100, 990, 200, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("2_2", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                is_clicked = True
+                            else:
+                                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\2_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(880, 100, 990, 200, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("2_1", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    is_clicked = True
+                                else:
+                                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\1_2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(880, 100, 990, 200, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("1_2", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        is_clicked = True
+                                    else:
+                                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\1_1.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(880, 100, 990, 200, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("1_1", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            is_clicked = True
+                                        else:
+                                            click_pos_2(940, 95, cla)
+                            if is_clicked == True:
+                                QTest.qWait(1000)
+                                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\82_move.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(830, 970, 1010, 1040, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("82_move", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    click_pos_2(980, 55, cla)
+
+
+            QTest.qWait(1000)
+
+
+
+    except Exception as e:
+        print(e)
 
 def go_random(cla):
     import numpy as np

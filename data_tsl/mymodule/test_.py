@@ -49,7 +49,7 @@ def go_test():
 
         print("test")
 
-        potion_check(cla)
+        go_maul(cla)
         full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\mission\\bosang_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
