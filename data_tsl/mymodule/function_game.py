@@ -723,7 +723,7 @@ def click_pos_2(pos_1, pos_2, cla):
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
 
-                        time.sleep(0.1)
+                        time.sleep(0.2)
 
                         moveX = 0
                         moveY = 0
@@ -839,7 +839,7 @@ def click_pos_reg(pos_1, pos_2, cla):
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
 
-                        time.sleep(0.1)
+                        time.sleep(0.2)
 
                         moveX = 0
                         moveY = 0

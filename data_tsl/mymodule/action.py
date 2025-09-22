@@ -12,7 +12,6 @@ from clean_screen import clean_screen_start, close_check
 from check import juljun_check, attack_check
 
 
-
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
 kind_confirm = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all"
@@ -244,24 +243,32 @@ def go_maul(cla):
             if is_count > 7:
                 is_ = True
 
-            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn.PNG"
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.8)
+            imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
-                print("jabhwa_btn", imgs_)
+                print("go_maul jabhwa_btn_1", imgs_)
                 is_ = True
             else:
-                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\maul_teleport.PNG"
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_2.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(565, 975, 625, 1040, cla, img, 0.8)
+                imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("maul_teleport", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    QTest.qWait(3000)
+                    print("go_maul jabhwa_btn_2", imgs_)
+                    is_ = True
                 else:
-                    clean_screen_start(cla)
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\maul_teleport.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(565, 975, 625, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("maul_teleport", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        QTest.qWait(3000)
+                    else:
+                        clean_screen_start(cla)
 
             QTest.qWait(1000)
 
@@ -270,6 +277,40 @@ def go_maul(cla):
     except Exception as e:
         print(e)
 
+
+def go_random(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_
+
+    try:
+        print("go_random")
+
+        is_ = False
+        is_count = 0
+        while is_ is False:
+            is_count += 1
+            if is_count > 7:
+                is_ = True
+
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_random\\random_teleport.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(520, 970, 580, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("random_teleport", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_ = True
+            else:
+                clean_screen_start(cla)
+
+            QTest.qWait(1000)
+
+
+
+    except Exception as e:
+        print(e)
 
 def bag_open(cla):
     import numpy as np

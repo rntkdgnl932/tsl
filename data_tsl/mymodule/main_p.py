@@ -55,6 +55,8 @@ from dead import dead_die
 from jadong import jadong_start
 from get_item import get_item_start
 from stop_event18 import _stop_please
+from dungeon import dungeon_start
+from mission import mission_start
 
 from test_ import go_test
 
@@ -1117,15 +1119,15 @@ class FirstTab(QWidget):
         self.dun_group_1.setLayout(dun_box_1)
 
         # 던전 종류
-        self.dun_group_2 = QGroupBox('심연')
+        self.dun_group_2 = QGroupBox('던전')
         dun_g2_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
         # dun_g2_list = ['던전 선택', '다크디멘젼', '레이드', '기간토마키아']
-        dun_g2_list = ['뒤틀린 심연 선택', '뒤틀린심연']
+        dun_g2_list = ['던전 선택', '특수_버려진기지', '특수_귀사당', '특수_별의낙원', '파티_버려진광산', '파티_달빛사원', '파티_제르비나의석상']
         dun_g2_name.addItems(dun_g2_list)
 
         dun_g2_stair = QComboBox()
-        dun_g2_stair_list = ['층', '1', '2']
+        dun_g2_stair_list = ['층', '1', '2', '3', '4']
         dun_g2_stair.addItems(dun_g2_stair_list)
 
         # dun_g2_step = QComboBox()
@@ -1137,29 +1139,29 @@ class FirstTab(QWidget):
         dun_box_2.addWidget(dun_g2_stair)
         # dun_box_2.addWidget(dun_g2_step)
 
-        dungeon_2 = QPushButton('심연 추가')
+        dungeon_2 = QPushButton('던전 추가')
         dungeon_2.clicked.connect(self.onActivated_dunjeon_2_add)
 
         dun_box_2.addWidget(dungeon_2)
         self.dun_group_2.setLayout(dun_box_2)
 
         # 던전 종류
-        self.dun_group_3 = QGroupBox('월드')
+        self.dun_group_3 = QGroupBox('미션')
         dun_g3_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
         # dun_g3_list = ['데이모스전장', '모리아기지', 'coming soon']
-        dun_g3_list = ['월드 던전 선택', '스피렌의안뜰']
+        dun_g3_list = ['미션 선택', '스피렌의안뜰']
         dun_g3_name.addItems(dun_g3_list)
 
         dun_g3_stair = QComboBox()
-        dun_g3_stair_list = ['층', '1', '2', '3', '4', '5', '6']
+        dun_g3_stair_list = ['구역', '1', '2', '3']
         dun_g3_stair.addItems(dun_g3_stair_list)
 
         dun_box_3 = QHBoxLayout()
-        dun_box_3.addWidget(dun_g3_name)
+        # dun_box_3.addWidget(dun_g3_name)
         dun_box_3.addWidget(dun_g3_stair)
 
-        dungeon_3 = QPushButton('월드 추가')
+        dungeon_3 = QPushButton('미션 추가')
         dungeon_3.clicked.connect(self.onActivated_dunjeon_3_add)
 
         dun_box_3.addWidget(dungeon_3)
@@ -1679,7 +1681,7 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_2(self, text):
         global onDunjeon_2
-        if text != 0 and text != '뒤틀린 심연 선택':
+        if text != 0 and text != '던전 선택':
             onDunjeon_2 = text
             print('onDunjeon_2', onDunjeon_2)
         else:
@@ -1707,12 +1709,12 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_3_level(self, text):
         global onDunjeon_3_level
-        if text != 0 and text != '층':
+        if text != 0 and text != '구역':
             onDunjeon_3_level = text
             print('onDunjeon_3_level', onDunjeon_3_level)
         else:
             onDunjeon_3_level = 0
-            print("던전 층수를 선택해 주세요.")
+            print("미션 구역을 선택해 주세요.")
 
     # def onActivated_dunjeon_3_step(self, text):
     #     global onDunjeon_3_step
@@ -1821,7 +1823,7 @@ class FirstTab(QWidget):
             self.onActivated_dunjeon_add2(data)
     def onActivated_dunjeon_2_add(self):
         char_ = onCharacter
-        dun_ = "던전/심연/" + str(onDunjeon_2) + "_" + str(onDunjeon_2_level)
+        dun_ = "던전_" + str(onDunjeon_2) + "_" + str(onDunjeon_2_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
@@ -1845,14 +1847,14 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_3_add(self):
         char_ = onCharacter
-        dun_ = "던전/월드/" + str(onDunjeon_3) + "_" + str(onDunjeon_3_level)
+        dun_ = "미션_" + str(onDunjeon_3_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
             pyautogui.alert(button='넵', text='몇 클라인지 선택해 주시지예', title='뭐합니꺼')
-        elif onDunjeon_3 == '던전 선택' or onDunjeon_3 == 'none' or onDunjeon_3_level == 0 or onDunjeon_3_level == "층":
+        elif onDunjeon_3 == '던전 선택' or onDunjeon_3_level == 0 or onDunjeon_3_level == "구역":
             pyautogui.alert(button='넵', text='던전 및 층수를 선택해 주시지예', title='아 진짜 뭐합니꺼')
-        elif onCharacter != 0 and (onDunjeon_2 != '던전 선택' or onDunjeon_2 != 'none'):
+        elif onCharacter != 0 or onDunjeon_3_level == 0 or onDunjeon_3_level == "구역":
             print('char_', char_)
             print('dun_', dun_)
 
@@ -3957,9 +3959,11 @@ class game_Playing(QThread):
                                     get_item_start(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
 
-                                # elif "각종템받기" in result_schedule_:
-                                #     game_start(v_.now_cla)
-                                #     myQuest_play_add(v_.now_cla, result_schedule_)
+                                elif "던전" in result_schedule_:
+                                    dungeon_start(v_.now_cla, result_schedule_)
+
+                                elif "미션" in result_schedule_:
+                                    mission_start(v_.now_cla, result_schedule_)
 
 
                                 time.sleep(0.5)

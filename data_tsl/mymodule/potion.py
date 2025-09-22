@@ -109,18 +109,28 @@ def maul_potion(cla):
 
 
             else:
-                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn.PNG"
+                is_jabhwa = False
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.8)
+                imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("jabhwa_btn", imgs_)
+                    print("maul_potion jabhwa_btn", imgs_)
+                    is_jabhwa = True
+                else:
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\potion\\jabhwa_btn_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(870, 970, 930, 1040, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("maul_potion jabhwa_btn", imgs_)
+                        is_jabhwa = True
+                if is_jabhwa == True:
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     for i in range(5):
                         result_move = move_check(cla)
                         if result_move == True:
                             move_ing(cla)
-                            break
                         QTest.qWait(200)
 
 

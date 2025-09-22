@@ -39,7 +39,7 @@ def quest_start(cla, data):
             print("jangchak_btn", imgs_)
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
-        potion_check(cla)
+
 
         all_skip(cla)
 
@@ -52,6 +52,7 @@ def quest_start(cla, data):
             imgs_ = imgs_set_(940, 850, 1010, 920, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("quest_btn", imgs_)
+                potion_check(cla)
             else:
                 full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\q_clear.PNG"
                 img_array = np.fromfile(full_path, np.uint8)

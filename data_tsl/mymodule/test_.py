@@ -23,9 +23,10 @@ def go_test():
     from get_item import get_post, get_event, get_upjuk
     from check import attack_check, move_check
     from action import juljun_on, juljun_off, attack_on, go_maul
-    from potion import maul_potion
+    from potion import maul_potion,potion_check
     from boonhae_collection import boonhae_setting, boonhae_collection_start, boonhae_start
     from dead import dead_die
+    from clean_screen import skip_check
     cla = "one"
 
     plus = 0
@@ -47,7 +48,14 @@ def go_test():
     try:
 
         print("test")
-        dead_die(cla, "자동사냥")
+
+        potion_check(cla)
+        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\mission\\bosang_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(860, 960, 1010, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("bosang_btn", imgs_)
 
         # boonhae_start(cla)
 

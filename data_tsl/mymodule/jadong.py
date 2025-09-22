@@ -48,12 +48,14 @@ def go_spot(cla):
     from get_item import get_post, get_event, get_upjuk
     from check import attack_check, out_check, move_check, move_ing
     from action import juljun_on, juljun_off, attack_on
-    from potion import potion_check
+
 
 
     try:
 
         print("go_spot")
+
+
 
         is_data = False
         is_data_count = 0
@@ -124,7 +126,7 @@ def go_spot(cla):
                         imgs_for = imgs_set_for(35, 75, 90, 500, cla, img, 0.8)
                         if imgs_for is not None and imgs_for != False:
                             if len(imgs_for) > 0:
-                                random_spot = random.randint(0, len(imgs_for))
+                                random_spot = random.randint(0, len(imgs_for) - 1)
                                 y_reg = imgs_for[random_spot][1]
                                 click_pos_reg(110, y_reg, cla)
 
