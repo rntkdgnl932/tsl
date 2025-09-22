@@ -25,7 +25,7 @@ def go_test():
     from action import juljun_on, juljun_off, attack_on, go_maul
     from potion import maul_potion
     from boonhae_collection import boonhae_setting, boonhae_collection_start, boonhae_start
-
+    from dead import dead_die
     cla = "one"
 
     plus = 0
@@ -47,7 +47,7 @@ def go_test():
     try:
 
         print("test")
-        boonhae_collection_start(cla)
+        dead_die(cla, "자동사냥")
 
         # boonhae_start(cla)
 

@@ -235,7 +235,7 @@ def character_change(cla, character_id):
 
                                 else:
                                     get_event_sub(cla)
-                            dead_die(cla, "start")
+
                             chango_action(cla, "jangbi_out")
                             repair_start(cla)
 
@@ -446,7 +446,7 @@ def game_ready(cla):
 
                     result_fix = fix_check(cla)
                     if result_fix == True:
-                        is_path == False
+                        is_path = False
 
                     full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\game_start\\download_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
