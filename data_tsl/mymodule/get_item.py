@@ -152,6 +152,9 @@ def get_event(cla):
                     y_reg = imgs_.y
                     click_pos_reg(x_reg - 50, y_reg + 10, cla)
                     QTest.qWait(500)
+                    click_pos_reg(x_reg - 50, y_reg + 10, cla)
+                    QTest.qWait(500)
+
                     break
 
             if is_point == True:
@@ -297,8 +300,10 @@ def get_event_click(cla, data, x_reg, y_reg):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(int(x_reg) - 20, int(y_reg) - 20, int(x_reg) + 20, int(y_reg) + 20, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("event point", point_[p], imgs_)
+                print("event left point", point_[p], imgs_)
                 is_point = True
+
+
         if is_point == True:
             if kind == "seven":
                 print("seven")
@@ -453,26 +458,30 @@ def get_event_click(cla, data, x_reg, y_reg):
 
                         point_ready = kind_point_ready + "event\\seven_four\\"
                         point_ = os.listdir(point_ready)
+
+                        is_p = False
+
                         for p in range(len(point_)):
 
                             full_path = str(point_ready) + point_[p]
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(380, 490, 830, 540, cla, img, 0.8)
+                            imgs_ = imgs_set_(380, 490, 860, 540, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("event seven_four point", point_[p], imgs_)
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
                                 QTest.qWait(500)
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+                                is_p = True
 
-
+                        if is_p == True:
+                            for p in range(len(point_)):
                                 full_path = str(point_ready) + point_[p]
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(560, 530, 605, 660, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("event seven_four point", point_[p], imgs_)
-                                    is_p = True
+                                    print("event seven_four point b1", point_[p], imgs_)
                                     click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
                                     QTest.qWait(500)
                                     click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
@@ -480,20 +489,19 @@ def get_event_click(cla, data, x_reg, y_reg):
                                     full_path = str(point_ready) + point_[p]
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(805, 530, 845, 660, cla, img, 0.8)
+                                    imgs_ = imgs_set_(805, 530, 860, 660, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("event seven_four point", point_[p], imgs_)
-                                        is_p = True
+                                        print("event seven_four point b2", point_[p], imgs_)
                                         click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
                                         QTest.qWait(500)
                                         click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+                                QTest.qWait(100)
 
-                            else:
-                                result_skip = skip_check(cla)
-                                if result_skip == True:
-                                    skip_start(cla)
+                        result_skip = skip_check(cla)
+                        if result_skip == True:
+                            skip_start(cla)
 
-                            QTest.qWait(100)
+
                     QTest.qWait(200)
                 for i in range(5):
                     full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\event\\click_close.PNG"
@@ -512,7 +520,7 @@ def get_event_click(cla, data, x_reg, y_reg):
             if result_skip == True:
                 skip_start(cla)
             else:
-                break
+                is_ing = False
         QTest.qWait(1000)
 
 
