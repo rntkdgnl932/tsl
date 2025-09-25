@@ -231,7 +231,7 @@ def character_change(cla, character_id):
                             if imgs_ is not None and imgs_ != False:
 
                                 if int(character_id) == 1:
-                                    get_event(cla)
+                                    print("ok")
 
                                 else:
                                     get_event_sub(cla)

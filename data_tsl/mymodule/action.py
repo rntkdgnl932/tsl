@@ -8,7 +8,7 @@ from check import out_check
 import numpy as np
 import cv2
 from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos, change_number
-from clean_screen import clean_screen_start, close_check
+from clean_screen import clean_screen_start, close_check, close_click
 from check import juljun_check, attack_check
 
 
@@ -17,7 +17,11 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 kind_confirm = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\confirm_all"
 kind_confirm_list = os.listdir(kind_confirm)
 
+kind_point_ready = "c:\\my_games\\tsl\\data_tsl\\imgs\\point\\"
+
 def menu_open(cla):
+
+    from get_item import get_post, get_event, get_upjuk
 
     try:
         print("menu_open")
@@ -39,9 +43,56 @@ def menu_open(cla):
             if imgs_ is not None and imgs_ != False:
                 print("character_select", imgs_)
 
-                result_close = close_check(cla)
-                if result_close == False:
-                    is_action = True
+
+                ##########################################
+                ##### 겟 포인트 체크하기 ###
+                is_point = False
+                ##########################################
+                check_list = ["post", "upjuk", "event", "special"]
+
+                for i in range(len(check_list)):
+
+
+                    data = str(check_list[i])
+
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\" + data + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(750, 30, 1010, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("check_list", data, imgs_)
+                        x_ = imgs_.x
+                        y_ = imgs_.y
+
+                        point_ready = kind_point_ready + "menu\\"
+                        point_ = os.listdir(point_ready)
+                        for p in range(len(point_)):
+                            full_path = str(point_ready) + point_[p]
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(x_, y_ - 40, x_ + 40, y_, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu point!!!!!", point_[p], imgs_)
+                                is_point = True
+                                click_pos_reg(x_, y_, cla)
+                                QTest.qWait(500)
+                                break
+                    if is_point == True:
+                        if data == "post":
+                            get_post(cla)
+                        elif data == "upjuk":
+                            get_upjuk(cla)
+                        elif data == "event" or data == "special":
+                            get_event(cla, data)
+                        break
+
+                ##########################################
+                if is_point == False:
+                    result_close = close_check(cla)
+                    if result_close == False:
+                        is_action = True
+                    else:
+                        close_click(cla)
             else:
                 result_out = out_check(cla)
                 if result_out == True:
@@ -53,6 +104,57 @@ def menu_open(cla):
     except Exception as e:
         print(e)
 
+
+def menu_point_check(cla, data):
+    from get_item import get_post, get_event, get_upjuk
+
+    try:
+        print("menu_point_check", data)
+
+        is_action = False
+        is_action_count = 0
+
+        while is_action is False:
+            is_action_count += 1
+            if is_action_count > 5:
+                is_action = True
+
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\" + str(data) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(750, 30, 1010, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("post", imgs_)
+                    x_ = imgs_.x
+                    y_ = imgs_.y
+
+                    point_ready = kind_point_ready + "menu\\"
+                    point_ = os.listdir(point_ready)
+                    for p in range(len(point_)):
+                        full_path = str(point_ready) + point_[p]
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(x_, y_ - 40, x_ + 40, y_, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu point!!!!!", point_[p], imgs_)
+                            is_point = True
+                            click_pos_reg(x_, y_, cla)
+                            QTest.qWait(500)
+                            break
+                    if is_point == True:
+                        if data == "post":
+                            get_post(cla)
+                        elif data == "upjuk":
+                            get_upjuk(cla)
+                        elif data == "event":
+                            get_event(cla)
+                        elif data == "special":
+                            get_event(cla)
+
+
+
+    except Exception as e:
+        print(e)
 
 def confirm_all(cla):
 

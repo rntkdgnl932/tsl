@@ -22,11 +22,13 @@ def go_test():
     from clean_screen import all_skip
     from get_item import get_post, get_event, get_upjuk
     from check import attack_check, move_check
-    from action import juljun_on, juljun_off, attack_on, go_maul
+    from action import juljun_on, juljun_off, attack_on, go_maul, menu_open
     from potion import maul_potion,potion_check
     from boonhae_collection import boonhae_setting, boonhae_collection_start, boonhae_start
     from dead import dead_die
     from clean_screen import skip_check
+    from boonhae_collection import collection_start
+
     cla = "one"
 
     plus = 0
@@ -49,7 +51,7 @@ def go_test():
 
         print("test")
 
-        get_event(cla)
+        menu_open(cla)
         full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\mission\\bosang_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
