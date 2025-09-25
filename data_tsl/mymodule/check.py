@@ -52,8 +52,10 @@ def out_check(cla):
                 if result_close == False:
                     is_out = True
 
-        return is_out
+        if is_out == False:
+            jangsigan_check(cla)
 
+        return is_out
     except Exception as e:
         print(e)
 
@@ -169,21 +171,34 @@ def jangsigan_check(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2, int_put_, change_number
-    from action import menu_open
+    from action import confirm_all
     from massenger import line_to_me
 
     try:
         print("jangsigan_check")
 
+        longtime = False
 
-        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\check\\longtime\\jangsigan.PNG"
+        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\check\\longtime\\jangsigan_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(300, 400, 600, 640, cla, img, 0.85)
+        imgs_ = imgs_set_(300, 400, 700, 800, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
-            print("jangsigan", imgs_)
-            line_to_me(cla, "장시간 미접속")
-
+            print("jangsigan_2", imgs_)
+            confirm_all(cla)
+            longtime = True
+            line_to_me(cla, "jangsigan_2 미접속")
+        else:
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\check\\longtime\\long_time.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 400, 700, 800, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("jangsigan", imgs_)
+                confirm_all(cla)
+                longtime = True
+                line_to_me(cla, "long_time 미접속")
+        return longtime
     except Exception as e:
         print(e)
 
