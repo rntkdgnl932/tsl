@@ -75,8 +75,11 @@ def maul_potion(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action import go_maul
     from boonhae_collection import boonhae_collection_start
+
     try:
         print("maul_potion")
+
+        go_maul(cla)
 
 
         is_potion = False
@@ -146,7 +149,10 @@ def maul_potion(cla):
             if imgs_ is not None and imgs_ != False:
                 click_pos_2(980, 55, cla)
             else:
-                boonhae_collection_start(cla)
+                if "던전" in v_.now_scheduel:
+                    print("")
+                else:
+                    boonhae_collection_start(cla)
                 break
             QTest.qWait(500)
 
