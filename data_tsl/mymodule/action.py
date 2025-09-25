@@ -43,6 +43,9 @@ def menu_open(cla):
             if imgs_ is not None and imgs_ != False:
                 print("character_select", imgs_)
 
+                result = close_check(cla)
+                if result == True:
+                    close_click(cla)
 
                 ##########################################
                 ##### 겟 포인트 체크하기 ###
@@ -51,6 +54,9 @@ def menu_open(cla):
                 check_list = ["post", "upjuk", "event", "special"]
 
                 for i in range(len(check_list)):
+
+
+
 
 
                     data = str(check_list[i])
