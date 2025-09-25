@@ -223,7 +223,7 @@ def dun_in_ready(cla, data):
                         is_ing = False
 
                     else:
-                        click_pos_reg(imgs_.x, 530, cla)
+                        click_pos_reg(x_reg, 530, cla)
 
                 else:
 
