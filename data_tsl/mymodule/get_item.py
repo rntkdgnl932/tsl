@@ -30,7 +30,7 @@ def get_item_start(cla):
     get_post(cla)
     get_event(cla, "event")
     get_event(cla, "special")
-    # get_sangjum(cla)
+    get_sangjum(cla)
 
 def get_post(cla):
     print("get_post")
@@ -835,38 +835,53 @@ def get_sangjum(cla):
         if imgs_ is not None and imgs_ != False:
             print("sangjum", imgs_)
 
-            is_point = False
-            point_ready = kind_point_ready + "post\\"
-            point_ = os.listdir(point_ready)
-            for p in range(len(point_)):
-                full_path = str(point_ready) + point_[p]
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\sangjum\\ilgwal_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 300, 600, 400, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("ilgwal_title", imgs_)
+
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\sangjum\\buy.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 60, 360, 120, cla, img, 0.8)
+                imgs_ = imgs_set_(490, 660, 630, 730, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("post point!!!!!", point_[p], imgs_)
-                    is_point = True
-                    click_pos_reg(imgs_.x - 25, imgs_.y + 10, cla)
-                    QTest.qWait(500)
-                    break
+                    print("buy", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
 
-            if is_point == True:
+                    for i in range(10):
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\sangjum\\anymore_buy_notice.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(370, 90, 700, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_buy_notice", imgs_)
+                            clean_screen_start(cla)
+                            is_ing = False
+                            break
+                        time.sleep(0.1)
 
-                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\post\\get_btn.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(870, 960, 1010, 1040, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("get_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    QTest.qWait(1000)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    QTest.qWait(500)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    QTest.qWait(500)
-                    skip_start(cla)
+
             else:
-                is_ing = False
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\sangjum\\ilgwal_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 970, 150, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("ilgwal_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\sangjum\\anymore_buy_notice.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(370, 90, 700, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("anymore_buy_notice", imgs_)
+                            clean_screen_start(cla)
+                            is_ing = False
+                            break
+                        time.sleep(0.1)
 
         else:
 
