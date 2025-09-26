@@ -140,10 +140,34 @@ def quest_open(cla, data):
                 click_pos_2(x_reg, 95, cla)
                 QTest.qWait(500)
 
+
+
                 if str(quest_kind[1]) == "메인":
-                    click_pos_2(55, 140, cla)
+                    for i in range(5):
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\sub_clicked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 70, 1000, 120, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub_clicked", imgs_)
+                            click_pos_2(55, 140, cla)
+                        else:
+                            break
+                        time.sleep(0.5)
                 elif str(quest_kind[1]) == "서브":
-                    click_pos_2(55, 170, cla)
+                    for i in range(5):
+                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\sub_clicked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 70, 1000, 120, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub_clicked", imgs_)
+                            break
+                        else:
+                            click_pos_2(55, 170, cla)
+
+                        time.sleep(0.5)
+
                 QTest.qWait(500)
 
 

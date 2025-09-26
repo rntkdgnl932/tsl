@@ -19,7 +19,7 @@ def go_test():
 
     from massenger import line_to_me
     from character_select_and_game_start import character_change, game_ready, game_start_screen
-    from clean_screen import all_skip
+    from clean_screen import all_skip, close_check
     from get_item import get_post, get_event, get_upjuk, get_sangjum
     from check import attack_check, move_check
     from action import juljun_on, juljun_off, attack_on, go_maul, menu_open
@@ -51,7 +51,7 @@ def go_test():
 
         print("test")
 
-        get_sangjum(cla)
+        close_check(cla)
         full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\mission\\bosang_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
