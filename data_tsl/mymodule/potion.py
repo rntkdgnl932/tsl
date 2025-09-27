@@ -59,6 +59,7 @@ def potion_check(cla):
                         is_potion = True
                         break
         if is_potion == False:
+            print("v_.potion_count", v_.potion_count)
             v_.potion_count += 1
             if v_.potion_count > 1:
                 maul_potion(cla)
@@ -66,6 +67,49 @@ def potion_check(cla):
     except Exception as e:
         print(e)
 
+
+def potion_check_test(cla):
+    import numpy as np
+    import cv2
+
+    from check import juljun_check, out_check
+    from function_game import imgs_set_, text_check_get_num
+    try:
+        print("potion_check_test")
+
+        print("potion_check_test juljun")
+        result = text_check_get_num(443, 1002, 453, 1018, cla)
+        print("result", result)
+        for n in range(len(kind_num)):
+            full_path = str(kind_num_ready) + str(kind_num[n])
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(443, 1002, 453, 1018, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("kind_num", str(kind_num[n]), imgs_)
+                result_num = kind_num[n].split("_")[0]
+                print("result_num", result_num)
+                break
+
+        QTest.qWait(1000)
+        print("potion_check_test out")
+
+
+
+        for n in range(len(kind_num)):
+            full_path = str(kind_num_ready) + str(kind_num[n])
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(363, 1010, 373, 1023, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("kind_num", str(kind_num[n]), imgs_)
+                result_num = kind_num[n].split("_")[0]
+                print("result_num", result_num)
+                break
+
+
+    except Exception as e:
+        print(e)
 
 def maul_potion(cla):
     import numpy as np

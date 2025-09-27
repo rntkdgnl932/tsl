@@ -321,6 +321,7 @@ def dun_in(cla, data):
             imgs_ = imgs_set_(25, 100, 215, 145, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
                 print("dungeon out_dun_in", str(dun_name), imgs_)
+                time.sleep(3)
                 go_random(cla)
                 attack_on(cla)
                 juljun_on(cla)

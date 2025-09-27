@@ -312,15 +312,10 @@ def attack_on(cla):
                 else:
                     result_out = out_check(cla)
                     if result_out == True:
-                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\attack\\auto_btn.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(940, 850, 1010, 910, cla, img, 0.85)
-                        if imgs_ is not None and imgs_ != False:
-                            print("auto_btn", imgs_)
-                            click_pos_2(980, 880, cla)
-                            QTest.qWait(300)
-                            click_pos_2(20, 925, cla)
+                        click_pos_2(980, 880, cla)
+                        QTest.qWait(300)
+                        click_pos_2(20, 925, cla)
+
 
                     else:
                         clean_screen_start(cla)

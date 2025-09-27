@@ -16,6 +16,9 @@ import random
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
+dead_list_ready = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\boohwal_btn\\"
+dead_list = os.listdir(dead_list_ready)
+
 def dead_die(cla, data):
     from clean_screen import all_skip, skip_check, skip_start, clean_screen_start
     from check import out_check
@@ -25,21 +28,24 @@ def dead_die(cla, data):
 
     is_dead = False
 
-    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\maul_boohwal_btn.PNG"
-    img_array = np.fromfile(full_path, np.uint8)
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    imgs_ = imgs_set_(300, 900, 700, 1040, cla, img, 0.8)
-    if imgs_ is not None and imgs_ != False:
-        print("maul_boohwal_btn", imgs_)
-        is_dead = True
-    else:
-        is_dead = False
-        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\boohwal_btn.PNG"
+    for i in range(len(dead_list)):
+
+        full_path = str(dead_list_ready) + str(dead_list[i])
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(180, 30, 300, 100, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("boohwal_btn", imgs_)
+            print("boohwal_btn", dead_list[i], imgs_)
+            is_dead = True
+            break
+
+    if is_dead == False:
+        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\maul_boohwal_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(300, 900, 700, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("maul_boohwal_btn", imgs_)
             is_dead = True
 
     if is_dead == True:
@@ -52,7 +58,7 @@ def dead_die_recovery(cla):
     from check import out_check
     from function_game import click_pos_2, click_pos_reg, imgs_set_, imgs_set_for, drag_pos
     from schedule import myQuest_play_add
-    print("dead_die")
+    print("dead_die_recovery")
 
 
 
@@ -67,38 +73,40 @@ def dead_die_recovery(cla):
         if is_ing_count > 20:
             is_ing = False
 
-        result_out = out_check(cla)
-        if result_out == True:
 
-            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\bokgoo_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 700, 600, 800, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("bokgoo_btn", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-            else:
+        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\bokgoo_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 700, 600, 800, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("bokgoo_btn", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+        else:
+            is_dead = False
+            for i in range(len(dead_list)):
 
-                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\boohwal_btn.PNG"
+                full_path = str(dead_list_ready) + str(dead_list[i])
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(180, 30, 300, 100, cla, img, 0.7)
+                imgs_ = imgs_set_(180, 30, 300, 100, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("boohwal_btn", imgs_)
+                    print("boohwal_btn list", dead_list[i], imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_dead = True
+                    break
 
-                else:
-                    is_ing = False
+            if is_dead == False:
+                is_ing = False
 
 
-        else:
-            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\maul_boohwal_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(300, 900, 700, 1040, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("maul_boohwal_btn", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dead_die\\maul_boohwal_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(300, 900, 700, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("maul_boohwal_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
         QTest.qWait(1000)
 
 
