@@ -83,6 +83,7 @@ def menu_open(cla):
                                 QTest.qWait(500)
                                 break
                     if is_point == True:
+                        is_action_count = 0
                         if data == "post":
                             get_post(cla)
                         elif data == "upjuk":
@@ -330,6 +331,9 @@ def attack_on(cla):
             is_att_count += 1
             if is_att_count > 7:
                 is_att = True
+
+            time.sleep(0.2)
+            click_pos_2(980, 880, cla)
 
 
             result_att = attack_check(cla)

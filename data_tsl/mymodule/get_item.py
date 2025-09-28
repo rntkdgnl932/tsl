@@ -638,6 +638,7 @@ def get_event_click(cla):
                             QTest.qWait(500)
                             click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
                             is_p = True
+                            break
 
                     if is_p == True:
                         for p in range(len(point_)):

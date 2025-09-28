@@ -218,63 +218,69 @@ def quest_open(cla, data):
                         time.sleep(1)
 
                     else:
+                        for_1x = 0
                         for_1y = 0
+                        for_2x = 0
                         for_2y = 0
+
+                        cleared = False
+
                         full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_for = imgs_set_for(240, 120, 330, 1040, cla, img, 0.8)
                         if imgs_for is not None and imgs_for != False:
                             if len(imgs_for) > 0:
+                                cleared = True
                                 for_1x = imgs_for[len(imgs_for) - 1][0]
                                 for_1y = imgs_for[len(imgs_for) - 1][1]
-
                         full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_for = imgs_set_for(240, 120, 330, 1040, cla, img, 0.8)
                         if imgs_for is not None and imgs_for != False:
                             if len(imgs_for) > 0:
+                                cleared = True
                                 for_2x = imgs_for[len(imgs_for) - 1][0]
                                 for_2y = imgs_for[len(imgs_for) - 1][1]
+                        if cleared == True:
+                            if for_1y > for_2y:
+                                for_x = for_1x
+                                for_y = for_1y
+                            else:
+                                for_x = for_2x
+                                for_y = for_2y
 
-                        if for_1y > for_2y:
-                            for_x = for_1x
-                            for_y = for_1y
-                        else:
-                            for_x = for_2x
-                            for_y = for_2y
-
-                        if for_y > 900:
-                            drag_pos(220, 990, 220, 965, cla)
-                            QTest.qWait(2000)
-                            for i in range(10):
-                                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(240, 120, 330, 1040, cla, img, 0.75)
-                                if imgs_ is not None and imgs_ != False:
-                                    break
-                                else:
-                                    drag_pos(220, 965, 220, 990, cla)
+                            if for_y > 900:
+                                drag_pos(220, 990, 220, 965, cla)
                                 QTest.qWait(2000)
+                                for i in range(10):
+                                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\main_clear_1.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(240, 120, 330, 1040, cla, img, 0.75)
+                                    if imgs_ is not None and imgs_ != False:
+                                        break
+                                    else:
+                                        drag_pos(220, 965, 220, 990, cla)
+                                    QTest.qWait(2000)
 
-                        else:
+                            else:
 
 
-                            click_pos_reg(for_x, for_y + 45, cla)
+                                click_pos_reg(for_x, for_y + 45, cla)
 
-                            if str(quest_kind[1]) == "서브":
-                                QTest.qWait(500)
-                                print("for_x, for_y", for_x, for_y)
-                                full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\sub_complete.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_reg(for_x - 25, for_y, for_x + 25, for_y + 140, cla, img, 0.75)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("sub_complete", imgs_)
-                                    myQuest_play_add(cla, data)
-                                    is_ing = False
+                                if str(quest_kind[1]) == "서브":
+                                    QTest.qWait(500)
+                                    print("for_x, for_y", for_x, for_y)
+                                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\tuto\\sub_complete.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_reg(for_x - 25, for_y, for_x + 25, for_y + 140, cla, img, 0.75)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("sub_complete", imgs_)
+                                        myQuest_play_add(cla, data)
+                                        is_ing = False
 
 
 
