@@ -6,7 +6,7 @@ from PyQt5.QtTest import *
 import variable as v_
 
 
-from action import menu_open, confirm_all
+from action import menu_open_pure, confirm_all
 import numpy as np
 import cv2
 import pyautogui
@@ -113,7 +113,7 @@ def get_post(cla):
                     is_ing = False
 
             else:
-                menu_open(cla)
+                menu_open_pure(cla)
         QTest.qWait(1000)
 
 def get_event(cla, data):
@@ -215,7 +215,7 @@ def get_event(cla, data):
 
 
             else:
-                menu_open(cla)
+                menu_open_pure(cla)
         QTest.qWait(1000)
 
 
@@ -811,7 +811,7 @@ def get_upjuk(cla):
                     is_ing = False
 
             else:
-                menu_open(cla)
+                menu_open_pure(cla)
         QTest.qWait(1000)
 
 
@@ -904,7 +904,7 @@ def get_sangjum(cla):
 
 
             else:
-                menu_open(cla)
+                menu_open_pure(cla)
         QTest.qWait(1000)
 
 

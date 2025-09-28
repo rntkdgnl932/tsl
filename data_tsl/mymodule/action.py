@@ -43,9 +43,7 @@ def menu_open(cla):
             if imgs_ is not None and imgs_ != False:
                 print("character_select", imgs_)
 
-                result = close_check(cla)
-                if result == True:
-                    close_click(cla)
+
 
                 ##########################################
                 ##### 겟 포인트 체크하기 ###
@@ -55,8 +53,9 @@ def menu_open(cla):
 
                 for i in range(len(check_list)):
 
-
-
+                    result = close_check(cla)
+                    if result == True:
+                        close_click(cla)
 
 
                     data = str(check_list[i])
@@ -110,6 +109,43 @@ def menu_open(cla):
     except Exception as e:
         print(e)
 
+
+def menu_open_pure(cla):
+    from get_item import get_post, get_event, get_upjuk
+
+    try:
+        print("menu_open_pure")
+
+        is_action = False
+        is_action_count = 0
+
+        while is_action is False:
+            is_action_count += 1
+            if is_action_count > 5:
+                is_action = True
+
+            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\character_select.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(740, 30, 1010, 1040, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("character_select", imgs_)
+
+                result = close_check(cla)
+                if result == True:
+                    close_click(cla)
+
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(975, 55, cla)
+                else:
+                    clean_screen_start(cla)
+            QTest.qWait(100)
+
+    except Exception as e:
+        print(e)
 
 def menu_point_check(cla, data):
     from get_item import get_post, get_event, get_upjuk
