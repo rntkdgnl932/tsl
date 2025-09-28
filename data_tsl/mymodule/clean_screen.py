@@ -26,6 +26,7 @@ def clean_screen_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2, int_put_, change_number
     from action import juljun_off
     from check import juljun_check
+    from dead import dead_die
     try:
         print("clean_screen_start")
         # result_out = out_check(cla)
@@ -34,6 +35,8 @@ def clean_screen_start(cla):
         result_jul = juljun_check(cla)
         if result_jul == True:
             juljun_off(cla)
+
+        dead_die(cla, v_.now_scheduel)
 
         all_skip(cla)
         close_click(cla)
