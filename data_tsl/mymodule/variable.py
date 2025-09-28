@@ -1,6 +1,7 @@
 # 현재실행중인 클라우드
 now_cla = 'none'
 now_scheduel = 'none'
+now_id = 1
 
 # 아두이노 관련
 now_arduino = "none"

@@ -28,6 +28,7 @@ def out_check(cla):
 
     from function_game import imgs_set_
     from clean_screen import close_check
+    from character_select_and_game_start import game_start_screen
 
     try:
         print("out_check")
@@ -51,6 +52,13 @@ def out_check(cla):
                 result_close = close_check(cla)
                 if result_close == False:
                     is_out = True
+                else:
+                    full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\game_start\\game_start_button.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(740, 970, 1010, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        game_start_screen(cla, v_.now_id)
 
         if is_out == False:
             jangsigan_check(cla)
