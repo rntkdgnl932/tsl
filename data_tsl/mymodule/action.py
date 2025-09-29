@@ -325,6 +325,10 @@ def attack_on(cla):
     try:
         print("attack_on")
 
+        time.sleep(0.2)
+        click_pos_2(980, 880, cla)
+
+
         is_att = False
         is_att_count = 0
         while is_att is False:
@@ -332,8 +336,7 @@ def attack_on(cla):
             if is_att_count > 7:
                 is_att = True
 
-            time.sleep(0.2)
-            click_pos_2(980, 880, cla)
+
 
 
             result_att = attack_check(cla)

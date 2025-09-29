@@ -3922,7 +3922,7 @@ class game_Playing(QThread):
 
                                 # 게임 시작 화면인지 분석부터 하기
                                 game_start_screen(v_.now_cla, character_id)
-
+                                v_.now_id = character_id
 
 
 

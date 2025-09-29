@@ -27,10 +27,13 @@ def clean_screen_start(cla):
     from action import juljun_off
     from check import juljun_check
     from dead import dead_die
+    from character_select_and_game_start import game_start_screen
     try:
         print("clean_screen_start")
         # result_out = out_check(cla)
         # if result_out == False:
+
+        game_start_screen(cla, v_.now_id)
 
         result_jul = juljun_check(cla)
         if result_jul == True:

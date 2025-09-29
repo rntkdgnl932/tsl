@@ -26,6 +26,9 @@ def dead_die(cla, data):
     from schedule import myQuest_play_add
     print("dead_die", data)
 
+
+
+
     is_dead = False
 
     for i in range(len(dead_list)):
