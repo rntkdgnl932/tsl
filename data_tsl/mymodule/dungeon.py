@@ -98,6 +98,12 @@ def dun_in_ready(cla, data):
         dun_cate = "special"
     elif dun_cate_ready == "파티":
         dun_cate = "party"
+    elif dun_cate_ready == "이벤트":
+        dun_cate = "event"
+        dun_name = "event"
+
+
+
     if dun_kind == "버려진기지":
         dun_name = "giji"
     elif dun_kind == "귀사당":
@@ -228,9 +234,11 @@ def dun_in_ready(cla, data):
                 else:
 
                     if dun_cate_ready == "특수":
-                        click_pos_2(50, 95, cla)
+                        click_pos_2(130, 95, cla)
                     elif dun_cate_ready == "파티":
-                        click_pos_2(140, 95, cla)
+                        click_pos_2(220, 95, cla)
+                    elif dun_cate_ready == "이벤트":
+                        click_pos_2(50, 95, cla)
                     QTest.qWait(500)
 
 

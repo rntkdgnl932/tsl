@@ -273,9 +273,9 @@ def get_event_click(cla):
             ##################종류#######################
             ##################################################
 
-                    # - : ?
+                    # - : 1, 8, 9
 
-                    # 1 : pc전용7일출석이벤트(seven) o
+                    # 1 :
 
                     # 2 : 14일출석이벤트(fourteen) o
 
@@ -285,35 +285,41 @@ def get_event_click(cla):
 
                     # 5 : 영웅지원이벤트I(seven_four) o
 
-                    # 6 : 보스토벌이벤트(eight) 6
+                    # 6 : 보스토벌이벤트(eight) o
 
-                    # 7 : 영웅지원이벤트(seven_four) 7
+                    # 7 : 영웅지원이벤트II(seven_four) o
 
-                    # 8 : 기본성장시즌패스(all_get) 8
+                    # 8 :
 
-                    # 9 : 기본성장시즌패스(all_get) 8
+                    # 9 :
 
                     # 10 :
 
-                    # ? : 보스토벌이벤트(eight) 6
-                    # ? : 영웅지원이벤트(seven_four) 7
+                    # 11 : 기본성장시즌패스(all_get)
+
+                    # 12 : 심화성장시즌패스(all_get)
+
+                    # ? : 한가위기념7일출석이벤트(seven) 1
+                    # ? : 영웅지원이벤트III(seven_four) 8
+                    # ? : 한가위이벤트I(eight) 9
+                    # ? : 한가위이벤트II(eight) 10
 
                     # eight => six 포함
 
                     get_data = kind_event[i].split(".")[0]
 
-                    if get_data == "8" or get_data == "9":
+                    if get_data == "11" or get_data == "12":
                         kind = "all_get"
                     elif get_data == "1":
                         kind = "seven"
 
-                    elif get_data == "3" or get_data == "4" or get_data == "6":
+                    elif get_data == "3" or get_data == "4" or get_data == "6" or get_data == "9" or get_data == "10":
                         kind = "eight"
 
                     elif get_data == "2":
                         kind = "fourteen"
 
-                    elif get_data == "5" or get_data == "7":
+                    elif get_data == "5" or get_data == "7" or get_data == "8":
                         kind = "seven_four"
                     break
             ####################################################
