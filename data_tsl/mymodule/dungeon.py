@@ -38,6 +38,10 @@ def dungeon_start(cla, data):
         dun_cate = "special"
     elif dun_cate_ready == "파티":
         dun_cate = "party"
+    elif dun_cate_ready == "이벤트":
+        dun_cate = "event"
+        dun_name = "event"
+
     if dun_kind == "버려진기지":
         dun_name = "giji"
     elif dun_kind == "귀사당":
@@ -279,6 +283,10 @@ def dun_in(cla, data):
         dun_cate = "special"
     elif dun_cate_ready == "파티":
         dun_cate = "party"
+    elif dun_cate_ready == "이벤트":
+        dun_cate = "event"
+        dun_name = "event"
+
     if dun_kind == "버려진기지":
         dun_name = "giji"
     elif dun_kind == "귀사당":
