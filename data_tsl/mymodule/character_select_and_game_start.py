@@ -301,7 +301,7 @@ def game_ready(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from check import loading_check, out_check, loading_start
-
+    from massenger import line_to_me
 
     try:
 
@@ -447,6 +447,7 @@ def game_ready(cla):
                     result_fix = fix_check(cla)
                     if result_fix == True:
                         is_path = False
+                        line_to_me(cla, "점검중")
 
                     full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\game_start\\download_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
