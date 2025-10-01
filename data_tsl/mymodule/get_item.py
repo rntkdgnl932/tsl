@@ -531,6 +531,7 @@ def get_event_click(cla):
                                                 print("exist point", point_[end], imgs_)
                                                 exist_point = True
                                                 break
+                        if exist_point == False:
                             break
                         QTest.qWait(100)
                     if exist_point == False:
