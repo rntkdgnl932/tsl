@@ -253,7 +253,7 @@ def dun_in_ready(cla, data):
 
 
         else:
-
+            menu_open(cla)
             full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\dungeon.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -262,8 +262,6 @@ def dun_in_ready(cla, data):
                 print("dungeon", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
 
-            else:
-                menu_open(cla)
         QTest.qWait(1000)
 
 

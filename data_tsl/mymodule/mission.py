@@ -244,7 +244,7 @@ def mission_open(cla, data):
 
             else:
 
-
+                menu_open(cla)
                 full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\mission.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -253,8 +253,6 @@ def mission_open(cla, data):
                     print("menu mission", imgs_)
                     click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                else:
-                    menu_open(cla)
             QTest.qWait(1000)
 
 

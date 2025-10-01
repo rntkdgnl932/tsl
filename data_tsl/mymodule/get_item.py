@@ -289,11 +289,11 @@ def get_event_click(cla):
 
                     # 7 : 영웅지원이벤트II(seven_four) o
 
-                    # 8 :
+                    # 8 : 영웅지원이벤트III(seven_four) 8
 
-                    # 9 :
+                    # 9 : 한가위이벤트I(eight) 9
 
-                    # 10 :
+                    # 10 : 한가위이벤트II(eight) 10
 
                     # 11 : 기본성장시즌패스(all_get)
 
@@ -330,9 +330,9 @@ def get_event_click(cla):
 
             if kind == "none":
                 print("none")
-                exist_point = True
-                for i in range(3):
 
+                for i in range(3):
+                    exist_point = False
                     point_ready = kind_point_ready + "event\\seven_four\\"
                     point_ = os.listdir(point_ready)
                     for p in range(len(point_)):
@@ -370,8 +370,7 @@ def get_event_click(cla):
                                         imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             print("exist point", point_[end], imgs_)
-                                        else:
-                                            exist_point = False
+                                            exist_point = True
                                             break
                         if exist_point == False:
                             break
@@ -383,7 +382,7 @@ def get_event_click(cla):
                 print("all_get")
 
                 for i in range(3):
-                    exist_point = True
+                    exist_point = False
                     full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\get_item\\event\\all_get_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -416,9 +415,7 @@ def get_event_click(cla):
                                     imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
                                         print("exist point", point_[end], imgs_)
-                                    else:
-                                        print("not exist point")
-                                        exist_point = False
+                                        exist_point = True
                                         break
                     if exist_point == False:
                         break
@@ -429,7 +426,7 @@ def get_event_click(cla):
                 print("seven")
 
                 for i in range(3):
-                    exist_point = True
+                    exist_point = False
                     point_ready = kind_point_ready + "event\\seven\\"
                     point_ = os.listdir(point_ready)
                     for p in range(len(point_)):
@@ -467,8 +464,7 @@ def get_event_click(cla):
                                         imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
                                         if imgs_ is not None and imgs_ != False:
                                             print("exist point", point_[end], imgs_)
-                                        else:
-                                            exist_point = False
+                                            exist_point = True
                                             break
                         if exist_point == False:
                             break
@@ -483,11 +479,11 @@ def get_event_click(cla):
             elif kind == "eight":
                 print("eight")
                 for i in range(3):
-                    exist_point = True
+                    exist_point = False
                     point_ready = kind_point_ready + "event\\eight\\"
                     point_ = os.listdir(point_ready)
                     for p in range(len(point_)):
-
+                        print("point_[p]", point_[p])
                         full_path = str(point_ready) + point_[p]
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -533,10 +529,8 @@ def get_event_click(cla):
                                                               img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("exist point", point_[end], imgs_)
-                                            else:
-                                                exist_point = False
+                                                exist_point = True
                                                 break
-                        if exist_point == False:
                             break
                         QTest.qWait(100)
                     if exist_point == False:
@@ -561,7 +555,7 @@ def get_event_click(cla):
             elif kind == "fourteen":
                 print("fourteen")
                 for i in range(3):
-                    exist_point = True
+                    exist_point = False
                     point_ready = kind_point_ready + "event\\fourteen\\"
                     point_ = os.listdir(point_ready)
                     for p in range(len(point_)):
@@ -600,7 +594,6 @@ def get_event_click(cla):
                                         print("click_close", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
                                     else:
-                                        exist_point = True
                                         point_ready = kind_point_ready + "event\\left\\"
                                         point_ = os.listdir(point_ready)
                                         for end in range(len(point_)):
@@ -612,8 +605,7 @@ def get_event_click(cla):
                                                               img, 0.8)
                                             if imgs_ is not None and imgs_ != False:
                                                 print("exist point", point_[end], imgs_)
-                                            else:
-                                                exist_point = False
+                                                exist_point = True
                                                 break
                         if exist_point == False:
                             break
@@ -626,7 +618,7 @@ def get_event_click(cla):
             elif kind == "seven_four":
                 print("seven_four")
                 for i in range(3):
-                    exist_point = True
+                    exist_point = False
                     point_ready = kind_point_ready + "event\\seven_four\\"
                     point_ = os.listdir(point_ready)
 
@@ -692,8 +684,7 @@ def get_event_click(cla):
                                 imgs_ = imgs_set_(x_reg - 20, y_reg - 20, x_reg + 20, y_reg + 20, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     print("exist point", point_[end], imgs_)
-                                else:
-                                    exist_point = False
+                                    exist_point = True
                                     break
                     if exist_point == False:
                         break

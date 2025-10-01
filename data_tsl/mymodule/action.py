@@ -416,14 +416,16 @@ def go_maul(cla):
                         click_pos_2(130, 180, cla)
                         QTest.qWait(1000)
                     else:
-                        full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\maul_teleport.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(565, 975, 625, 1040, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("maul_teleport", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            QTest.qWait(3000)
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\action\\go_maul\\maul_teleport.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(565, 975, 625, 1040, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("maul_teleport", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                QTest.qWait(3000)
                         else:
                             clean_screen_start(cla)
 

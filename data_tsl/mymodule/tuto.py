@@ -115,6 +115,7 @@ def quest_open(cla):
                     is_ing = False
 
             else:
+                menu_open(cla)
                 full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\menu\\quest.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -145,8 +146,6 @@ def quest_open(cla):
                             click_pos_2(880, 110, cla)
 
 
-                else:
-                    menu_open(cla)
             QTest.qWait(1000)
 
 

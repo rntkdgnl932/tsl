@@ -7,7 +7,7 @@ import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
-
+kind_point_ready = "c:\\my_games\\tsl\\data_tsl\\imgs\\point\\"
 
 def go_test():
     import numpy as np
@@ -51,7 +51,31 @@ def go_test():
 
         print("test")
 
-        potion_check_test(cla)
+        get_event(cla, "event")
+        # point_ready = kind_point_ready + "event\\eight\\"
+        # point_ = os.listdir(point_ready)
+        # for p in range(len(point_)):
+        #
+        #     full_path = str(point_ready) + point_[p]
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(555, 500, 600, 700, cla, img, 0.8)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("event eight point", point_[p], imgs_)
+        #         click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+        #         QTest.qWait(500)
+        #         click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+        #     else:
+        #
+        #         full_path = str(point_ready) + point_[p]
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(800, 500, 850, 700, cla, img, 0.8)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("event eight point", point_[p], imgs_)
+        #             click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
+        #             QTest.qWait(500)
+        #             click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
         full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\mission\\bosang_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
