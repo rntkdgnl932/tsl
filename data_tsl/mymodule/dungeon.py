@@ -75,6 +75,8 @@ def dungeon_start(cla, data):
                 else:
                     attack_on(cla)
                     juljun_on(cla)
+            else:
+                dun_in_ready(cla, data)
         else:
             full_path = "c:\\my_games\\tsl\\data_tsl\\imgs\\dungeon\\" + str(dun_cate) + "\\" + str(
                 dun_name) + "\\" + "out_dun_in.PNG"
